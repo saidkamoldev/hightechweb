@@ -1,9 +1,5 @@
-  =>  Template Name    : HighTech - IT Solutions Website Template
+  =>  Template Name    : Kosmos TJ
 
-  =>  Template Link    : https://htmlcodex.com/it-solutions-website-template
+  =>  Template Author  : https://uz.linkedin.com/in/saidkamol-jo-raqulov-388047278
 
-  =>  Template License : https://htmlcodex.com/license (or read the LICENSE.txt file)
-
-  =>  Template Author  : HTML Codex
-
-  =>  Author Website   : https://htmlcodex.com
+  =>  Author Website   : https://akmirteam.uz
