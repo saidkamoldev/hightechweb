@@ -620,16 +620,78 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
                             <div class="p-4 rounded contact-form">
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz">
+                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz" name="name">
                                 </div>
                                 <div class="mb-4">
-                                    <input type="number" class="form-control border-0 py-4" placeholder="telefon raqam">
+                                    <input type="tel" class="form-control border-0 py-4" placeholder="Telefon raqami" id="phone_number" name="phone_number">
+                                    <div id="flag-container" class="mt-2"></div> <!-- Bayroqni ko'rsatish uchun konteyner -->
                                 </div>
                                 <div class="text-start">
-                                    <button class="btn bg-primary text-white py-3 px-5" type="button">Ariza qoldirish</button>
+                                    <button class="btn bg-primary text-white py-3 px-5" type="button" onclick="submitForm()">Ariza qoldirish</button>
                                 </div>
                             </div>
+                            
+                            <script>
+                            function submitForm() {
+                                // Telefon raqami maydonidagi qiymatni olish
+                                var phoneNumber = document.getElementById("phone_number").value;
+                            
+                                // Telefon raqami kiritilganligini tekshirish
+                                if (phoneNumber.trim() === "") {
+                                    alert("Iltimos, telefon raqamingizni kiriting.");
+                                    return;
+                                }
+                            
+                                // Ariza qabul qilinganini bildirish
+                                alert("Ariza qabul qilindi!");
+                            }
+                            </script>
+                            
+                            
+                            
+                            
+                            
+
+
+                            <script>
+                               document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.contact-form button').addEventListener('click', function() {
+        var name = document.querySelector('.contact-form input[type="text"]').value;
+        var phone_number = document.querySelector('.contact-form input[type="tel"]').value;
+
+        var data = {
+            name: name,
+            phone_number: phone_number
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/client/', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.send(JSON.stringify(data));
+
+        // GET so'rovini yuborishni boshlang
+        var xhrGet = new XMLHttpRequest();
+        xhrGet.open('GET', 'http://127.0.0.1:8000/client/', true);
+        xhrGet.onload = function() {
+            if (xhrGet.status === 200) {
+                var response = JSON.parse(xhrGet.responseText);
+                console.log(response);
+            }
+        };
+        xhrGet.send();
+    });
+});
+
+                            </script>
+                            
                         </div>
+
                     </div>
                 </div>
             </div> 
