@@ -116,7 +116,7 @@
                         <li class="breadcrumb-item"><a href="#">Главный страница</a></li>
                      
                         <li class="breadcrumb-item" aria-current="page">Проекты</li>
-                        <a style="font-weight: 900; padding-top: 5px; color: black; background-color: #00ED7F; border-radius: 5%; width: 40px; height: 40px; text-align: center;" href="contactRu.html" class="nav-item nav-link">Uz</a>
+                       
                     </ol>
                 </nav>
             </div>
@@ -214,15 +214,66 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
                             <div class="p-4 rounded contact-form">
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz">
+                                    <input type="text" class="form-control border-0 py-4" placeholder="Имя" name="name">
                                 </div>
                                 <div class="mb-4">
-                                    <input type="number" class="form-control border-0 py-4" placeholder="telefon raqam">
+                                    <input type="tel" class="form-control border-0 py-4" placeholder="Номер телефона" id="phone_number" name="phone_number">
+                                    <div id="flag-container" class="mt-2"></div> <!-- Bayroqni ko'rsatish uchun konteyner -->
                                 </div>
                                 <div class="text-start">
-                                    <button class="btn bg-primary text-white py-3 px-5" type="button">Подавать заявление</button>
+                                    <button class="btn bg-primary text-white py-3 px-5" type="button" onclick="submitForm()">Подавать заявление</button>
                                 </div>
                             </div>
+                            
+                            <script>
+                            function submitForm() {
+                                // Telefon raqami maydonidagi qiymatni olish
+                                var phoneNumber = document.getElementById("phone_number").value;
+                            
+                                // Telefon raqami kiritilganligini tekshirish
+                                if (phoneNumber.trim() === "") {
+                                    alert("Iltimos, telefon raqamingizni kiriting.");
+                                    return;
+                                }
+                            
+                                // Ariza qabul qilinganini bildirish
+                                alert("Ariza qabul qilindi!");
+                            }
+                            </script>
+                            
+                            
+                            
+                            
+                            
+
+
+                            <script>
+                           document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.contact-form button').addEventListener('click', function() {
+        var name = document.querySelector('.contact-form input[type="text"]').value;
+        var phone_number = document.querySelector('.contact-form input[type="tel"]').value;
+
+        var data = {
+            name: name,
+            phone_number: phone_number
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/client/', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.send(JSON.stringify(data));
+    });
+});
+
+
+                            </script>
+                            
                         </div>
                     </div>
                 </div>

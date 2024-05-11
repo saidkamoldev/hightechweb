@@ -135,7 +135,7 @@
                                 <h1 class="text-white display-1 mb-4 animated fadeInRight">"Kosmos" TJ жизнь без проблем</h1>
                                 <p class="mb-4 text-white fs-5 animated fadeInDown">Успейте пробрести квартиру в РАССРОЧКУ на данном этапе застройки в самой зеленой и тихой локации Гиждувана.</p>
                                 <a href="#application" class="me-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Подробнее</button></a>
-                                <a href="contact.html" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Контакты</button></a>
+                                <a href="contactRu.html" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Контакты</button></a>
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                                 <h1 class="text-white display-1 mb-4 animated fadeInLeft">"Kosmos" TJ жизнь без проблем</h1>
                                 <p class="mb-4 text-white fs-5 animated fadeInDown"></p>
                                 <a href="#application" class="me-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">Подробнее</button></a>
-                                <a href="contact.html" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Контакты</button></a>
+                                <a href="contactRu.html" class="ms-2"><button type="button" class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">Контакты</button></a>
                             </div>
                         </div>
                     </div>
@@ -619,15 +619,66 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
                             <div class="p-4 rounded contact-form">
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Ваше имя">
+                                    <input type="text" class="form-control border-0 py-4" placeholder="Имя" name="name">
                                 </div>
                                 <div class="mb-4">
-                                    <input type="number" class="form-control border-0 py-4" placeholder="номер телефона">
+                                    <input type="tel" class="form-control border-0 py-4" placeholder="Номер телефона" id="phone_number" name="phone_number">
+                                    <div id="flag-container" class="mt-2"></div> <!-- Bayroqni ko'rsatish uchun konteyner -->
                                 </div>
                                 <div class="text-start">
-                                    <button class="btn bg-primary text-white py-3 px-5" type="button">Подавать заявление</button>
+                                    <button class="btn bg-primary text-white py-3 px-5" type="button" onclick="submitForm()">Подавать заявление</button>
                                 </div>
                             </div>
+                            
+                            <script>
+                            function submitForm() {
+                                // Telefon raqami maydonidagi qiymatni olish
+                                var phoneNumber = document.getElementById("phone_number").value;
+                            
+                                // Telefon raqami kiritilganligini tekshirish
+                                if (phoneNumber.trim() === "") {
+                                    alert("Iltimos, telefon raqamingizni kiriting.");
+                                    return;
+                                }
+                            
+                                // Ariza qabul qilinganini bildirish
+                                alert("Ariza qabul qilindi!");
+                            }
+                            </script>
+                            
+                            
+                            
+                            
+                            
+
+
+                            <script>
+                           document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.contact-form button').addEventListener('click', function() {
+        var name = document.querySelector('.contact-form input[type="text"]').value;
+        var phone_number = document.querySelector('.contact-form input[type="tel"]').value;
+
+        var data = {
+            name: name,
+            phone_number: phone_number
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/client/', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.send(JSON.stringify(data));
+    });
+});
+
+
+                            </script>
+                            
                         </div>
                     </div>
                 </div>
@@ -641,7 +692,7 @@
             <div class="container pt-5 pb-4">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
-                        <a href="index.html">
+                        <a href="indexRu.html">
                             <h1 class="text-white fw-bold d-block">Kosmos<span class="text-secondary">TJ</span> </h1>
                         </a>
                         <p class="mt-4 text-light">Премиальная жизнь в комплексе «Kosmos» Tj без проблем с газом, водой и электричеством! </p>

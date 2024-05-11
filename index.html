@@ -654,7 +654,7 @@
 
 
                             <script>
-                               document.addEventListener('DOMContentLoaded', function() {
+                           document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.contact-form button').addEventListener('click', function() {
         var name = document.querySelector('.contact-form input[type="text"]').value;
         var phone_number = document.querySelector('.contact-form input[type="tel"]').value;
@@ -674,19 +674,9 @@
         };
 
         xhr.send(JSON.stringify(data));
-
-        // GET so'rovini yuborishni boshlang
-        var xhrGet = new XMLHttpRequest();
-        xhrGet.open('GET', 'http://127.0.0.1:8000/client/', true);
-        xhrGet.onload = function() {
-            if (xhrGet.status === 200) {
-                var response = JSON.parse(xhrGet.responseText);
-                console.log(response);
-            }
-        };
-        xhrGet.send();
     });
 });
+
 
                             </script>
                             

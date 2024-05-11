@@ -158,14 +158,12 @@
 
 
         <!-- Contact Start -->
-        <div class="container-fluid py-5 mt-5">
-            <div class="container py-5">
+        <div class="container-fluid py-5 mb-5">
+            <div class="container">
                 <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                    <h5 class="text-primary">Get In Touch</h5>
-                    <h1 class="mb-3">Kosmos TJ</h1>
-                    <p class="mb-2">Gaz, suv  elektr bilan muammolarsiz "Kosmos" TJ majmuasida Premium Hayot <br>
-                    G'ijduvondagi eng sokin va yashil hududda qurilishning shu bosqichida bo'lib to'lash sharti bilan xonadon sotib oling
-                    </p>
+                    <h5 class="text-primary">Aloqa uchun</h5>
+                    <h1 class="mb-3">Batafsil ma'lumot uchun aloqaga chiqing</h1>
+                    <p class="mb-2">"Kosmos" Tj turar-joy majmuasi sizga xonadondan ko'proq narsani taklif etadi. Biz sizga sifat va qulaylik birinchi o'rinda turadigan dunyoni taklif qilamiz</p>
                 </div>
                 <div class="contact-detail position-relative p-5">
                     <div class="row g-5 mb-5 justify-content-center">
@@ -176,7 +174,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <h4 class="text-primary">Address</h4>
-                                    <a href="https://goo.gl/maps/Zd4BCynmTb98ivUJ6" target="_blank" class="h5">123  Buhoro Gijduvon</a>
+                                    <a href="https://goo.gl/maps/Zd4BCynmTb98ivUJ6" target="_blank" class="h5">23 rank Str, NY</a>
                                 </div>
                             </div>
                         </div>
@@ -213,16 +211,68 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
                             <div class="p-4 rounded contact-form">
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz">
+                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz" name="name">
                                 </div>
                                 <div class="mb-4">
-                                    <input type="number" class="form-control border-0 py-4" placeholder="telefon raqam">
+                                    <input type="tel" class="form-control border-0 py-4" placeholder="Telefon raqami" id="phone_number" name="phone_number">
+                                    <div id="flag-container" class="mt-2"></div> <!-- Bayroqni ko'rsatish uchun konteyner -->
                                 </div>
                                 <div class="text-start">
-                                    <button class="btn bg-primary text-white py-3 px-5" type="button">Ariza qoldirish</button>
+                                    <button class="btn bg-primary text-white py-3 px-5" type="button" onclick="submitForm()">Ariza qoldirish</button>
                                 </div>
                             </div>
+                            
+                            <script>
+                            function submitForm() {
+                                // Telefon raqami maydonidagi qiymatni olish
+                                var phoneNumber = document.getElementById("phone_number").value;
+                            
+                                // Telefon raqami kiritilganligini tekshirish
+                                if (phoneNumber.trim() === "") {
+                                    alert("Iltimos, telefon raqamingizni kiriting.");
+                                    return;
+                                }
+                            
+                                // Ariza qabul qilinganini bildirish
+                                alert("Ariza qabul qilindi!");
+                            }
+                            </script>
+                            
+                            
+                            
+                            
+                            
+
+
+                            <script>
+                           document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.contact-form button').addEventListener('click', function() {
+        var name = document.querySelector('.contact-form input[type="text"]').value;
+        var phone_number = document.querySelector('.contact-form input[type="tel"]').value;
+
+        var data = {
+            name: name,
+            phone_number: phone_number
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8000/client/', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.send(JSON.stringify(data));
+    });
+});
+
+
+                            </script>
+                            
                         </div>
+
                     </div>
                 </div>
             </div> 
