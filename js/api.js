@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://127.0.0.1:8001/client/', true);
+        xhr.open('POST', 'http://127.0.0.1:8000/client/', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function() {
             if (xhr.status === 200) {
