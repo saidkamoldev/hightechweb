@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <h4 class="text-primary">Call Us</h4>
-                                    <a class="h5" href="tel:+0123456789" target="_blank">+998 94 973 97 77</a>
+                                    <a class="h5" href="tel:+99894973977" target="_blank">+998 94 973 97 77</a>
                                 </div>
                             </div>
                         </div>
@@ -240,35 +240,7 @@
                             
                             
                             
-                            
-
-
-                            <script>
-                           document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.contact-form button').addEventListener('click', function() {
-        var name = document.querySelector('.contact-form input[type="text"]').value;
-        var phone_number = document.querySelector('.contact-form input[type="tel"]').value;
-
-        var data = {
-            name: name,
-            phone_number: phone_number
-        };
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://127.0.0.1:8000/client/', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-            }
-        };
-
-        xhr.send(JSON.stringify(data));
-    });
-});
-
-
-                            </script>
+                    
                             
                         </div>
 
@@ -353,6 +325,7 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script src="js/api.js"></script>
     </body>
 
 </html>
