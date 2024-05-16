@@ -3,6 +3,8 @@
 
     <head>
         <meta charset="utf-8">
+        <link rel="icon" href="img/logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
         <title>Kosmos TJ</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
@@ -23,6 +25,9 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- phone number  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
@@ -210,39 +215,93 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
                             <div class="p-4 rounded contact-form">
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz" name="name">
+                                    <input type="text" class="form-control border-0 py-4" placeholder="Ismingiz" id="name" name="name">
                                 </div>
                                 <div class="mb-4">
                                     <input type="tel" class="form-control border-0 py-4" placeholder="Telefon raqami" id="phone_number" name="phone_number">
                                     <div id="flag-container" class="mt-2"></div> <!-- Bayroqni ko'rsatish uchun konteyner -->
+                                    <div class="error" id="phone-error">Noto'g'ri format kiritingiz, iltimos to'g'ri format kiriting.</div>
+                                    <div class="success" id="phone-success">To'g'ri format!</div>
                                 </div>
                                 <div class="text-start">
                                     <button class="btn bg-primary text-white py-3 px-5" type="button" onclick="submitForm()">Ariza qoldirish</button>
                                 </div>
                             </div>
+                        </div>
+                        <style>
+                            .error {
+                                color: red;
+                                display: none;
+                            }
+                            .success {
+                                color: green;
+                                display: none;
+                            }
+                        </style>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+                        <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var input = document.querySelector("#phone_number");
+                            var iti = window.intlTelInput(input, {
+                                initialCountry: "uz",
+                                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+                            });
+                    
+                            input.addEventListener('input', function() {
+                                // Telefon raqami kiritilganligini va yaroqliligini tekshirish
+                                if (iti.isValidNumber()) {
+                                    document.getElementById("phone-error").style.display = "none";
+                                    document.getElementById("phone-success").style.display = "block";
+                                } else {
+                                    document.getElementById("phone-error").style.display = "block";
+                                    document.getElementById("phone-success").style.display = "none";
+                                }
+                            });
+                    
+                            window.submitForm = function() {
+                                // Telefon raqami va ism maydonlaridagi qiymatlarni olish
+                                var phoneNumber = input.value;
+                                var name = document.getElementById("name").value;
                             
-                            <script>
-                            function submitForm() {
-                                // Telefon raqami maydonidagi qiymatni olish
-                                var phoneNumber = document.getElementById("phone_number").value;
-                            
-                                // Telefon raqami kiritilganligini tekshirish
-                                if (phoneNumber.trim() === "") {
-                                    alert("Iltimos, telefon raqamingizni kiriting.");
+                                // Telefon raqami kiritilganligini va yaroqliligini tekshirish
+                                if (phoneNumber.trim() === "" || !iti.isValidNumber()) {
+                                    document.getElementById("phone-error").style.display = "block";
+                                    document.getElementById("phone-success").style.display = "none";
                                     return;
+                                } else {
+                                    document.getElementById("phone-error").style.display = "none";
+                                    document.getElementById("phone-success").style.display = "block";
                                 }
                             
                                 // Ariza qabul qilinganini bildirish
                                 alert("Ariza qabul qilindi!");
-                            }
-                            </script>
-                            
-                            
-                            
-                            
                     
-                            
-                        </div>
+                                // Backendga yuborish kodini qo'shing (fetch yoki AJAX orqali)
+                                /*
+                                fetch('your-backend-endpoint', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ name: name, phone_number: phoneNumber }),
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Success:', data);
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });
+                                */
+                    
+                                // Input maydonlarini tozalash
+                                document.getElementById("phone_number").value = "";
+                                document.getElementById("name").value = "";
+                                document.getElementById("phone-success").style.display = "none";
+                            }
+                        });
+                        </script>
 
                     </div>
                 </div>
