@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="d-flex justify-content-between topbar">
                     <div class="top-info">
-                        <small class="me-3 text-white-50"><a href="#"><i class="fas fa-map-marker-alt me-2 text-secondary"></i></a>Buhoro Gijduvon</small>
+                        <small class="me-3 text-white-50"><a href="#"><i class="fas fa-map-marker-alt me-2 text-secondary"></i></a>Buxoro G'ijduvon</small>
                         <small class="me-3 text-white-50"><a href="#"><i class="fas fa-envelope me-2 text-secondary"></i></a>kosmostj@gmail.com</small>
                     </div>
                     <div id="note" class="text-secondary d-none d-xl-flex"><small>Спешите получить скидку</small></div>
@@ -78,12 +78,7 @@
                             <a href="projectRu.html" class="nav-item nav-link">Проекты</a>
                             <div class="nav-item dropdown">
                                 <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a> -->
-                                <div class="dropdown-menu rounded">
-                                    <a href="blog.html" class="dropdown-item">Our Blog</a>
-                                    <a href="team.html" class="dropdown-item">Our Team</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
-                                </div>
+                               
                             </div>
                             <a href="contactRu.html" class="nav-item nav-link active">Контакты</a>
                             <a style="font-weight: 900; padding-top: 5px; color: black; background-color: #00ED7F; border-radius: 5%; width: 40px; height: 40px; text-align: center;" href="about.html" class="nav-item nav-link">Uz</a>
@@ -193,7 +188,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <h4 class="text-primary">Номер телефона</h4>
-                                    <a class="h5" href="tel:+0123456789" target="_blank">+998 94 973 97 77</a>
+                                    <a class="h5" href="tel:+998949739777" target="_blank">+998 94 973 97 77</a>
                                 </div>
                             </div>
                         </div>
@@ -300,9 +295,13 @@
                                 */
                         
                                 // Очистка полей ввода
-                                document.getElementById("phone_number").value = "";
-                                document.getElementById("name").value = "";
-                                document.getElementById("phone-success").style.display = "none";
+                                 setTimeout(function() {
+        document.getElementById("phone_number").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("phone-success").style.display = "none";
+       
+    }, 2000);
+                    
                             }
                         });
                         </script>
@@ -352,8 +351,8 @@
                     <div class="col-lg-3 col-md-6">
                         <a href="#" class="h3 text-secondary">Связаться с нами</a>
                         <div class="text-white mt-4 d-flex flex-column contact-link">
-                            <a href="#" class="pb-3 text-light border-bottom border-primary"><i class="fas fa-map-marker-alt text-secondary me-2"></i> 123  Buhoro Gijduvon</a>
-                            <a href="#" class="py-3 text-light border-bottom border-primary"><i class="fas fa-phone-alt text-secondary me-2"></i> +998 94 973 97 77</a>
+                            <a href="#" class="pb-3 text-light border-bottom border-primary"><i class="fas fa-map-marker-alt text-secondary me-2"></i> Buxoro G'ijduvon</a>
+                            <a href="tel:+998949739777" class="py-3 text-light border-bottom border-primary"><i class="fas fa-phone-alt text-secondary me-2"></i> +998 94 973 97 77</a>
                             <a href="#" class="py-3 text-light border-bottom border-primary"><i class="fas fa-envelope text-secondary me-2"></i> kosmostj@gmail.com</a>
                         </div>
                     </div>
